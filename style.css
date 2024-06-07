@@ -47,7 +47,9 @@ body {
     cursor: pointer;
 }
 
+.loction-buttons {
 
+}
 
 #city-input {
     display: none; /* Hidden by default */
