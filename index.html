@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Week1-tasks</title>
 </head>
@@ -10,7 +11,17 @@
     <div class="container">
         <div class="main-forecast">
             <div class="location-date-time">
-                <div class="location" id="location">Kochi</div>
+                <div class="search-container">
+                    <div id="location-display">Kochi</div>
+                    <div class="location-buttons">
+                        <input type="text" id="city-input" placeholder="Enter city name" />
+                        <div id="search-icon" class="fas fa-search"></div>
+                        <button id="current-location-btn" class="fas fa-map-marker-alt"></button>
+                    </div>
+                    
+                </div>
+                
+                
                 <div class="date-time">
                     <span id="date">21 April 2021</span> | <span id="time">12:30</span> <span id="am-pm">PM</span>
                 </div>

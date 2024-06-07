@@ -1,4 +1,4 @@
-const locationEL = document.getElementById('location');
+const locationEL = document.getElementById('location-display');
 const dateEl = document.getElementById('date');
 const timeEl = document.getElementById('time');
 const ampmEl = document.getElementById('am-pm');
@@ -41,8 +41,56 @@ setInterval(() => {
     dateEl.innerHTML = days[day] + ' ' + date + ', ' + months[month];
 }, 1000);
 
-getWeatherData();
+//getWeatherData();
+
+document.addEventListener('DOMContentLoaded', function() {
+    getWeatherData();
+});
+
+/*document.getElementById('current-location-btn').addEventListener('click', function() {
+    getWeatherData(); // This will call your existing function to fetch weather data using geolocation
+});
+
+document.getElementById('city-input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        getWeatherCityData(this.value); // Fetch weather data for the entered city name
+    }
+});*/
+
+document.getElementById('search-icon').addEventListener('click', function() {
+    var input = document.getElementById('city-input');
+    if (input.style.display === 'none') {
+        input.style.display = 'block';
+        input.focus();
+
+        locationEL.innerHTML = '';
+    } else {
+        input.style.display = 'none';
+    }
+});
+
+document.getElementById('current-location-btn').addEventListener('click', function() {
+    getWeatherData(); // Fetch current location weather
+});
+
+document.getElementById('city-input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        var city = this.value;
+        getWeatherData(city); // Fetch weather for the entered city
+
+        // Hide the input field after fetching weather data
+        this.style.display = 'none';
+
+        
+    }
+});
+
+
 function getWeatherData() {
+
+    dayEl.innerHTML = '';
+    weakEl.innerHTML = '';
+
     navigator.geolocation.getCurrentPosition((success) => {
         let { latitude, longitude } = success.coords;
         console.log(latitude, longitude);
@@ -51,8 +99,46 @@ function getWeatherData() {
             console.log(data);
             showWeatherData(data);
         })
+        
     })
 }
+
+/*function getWeatherCityData(city) {
+
+    dayEl.innerHTML = '';
+    weakEl.innerHTML = '';
+
+    let query = city || 'auto:ip'; // If city is not provided, use 'auto:ip' to fetch weather for current location
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${query}&days=7&hourly=1`).then(res => res.json()).then(data => {
+        console.log(data);
+        showWeatherData(data);
+    })
+    .catch(err => {
+        // Handle any errors
+        console.error(err);
+    });
+}*/
+
+function getWeatherData(city) {
+
+    dayEl.innerHTML = '';
+    weakEl.innerHTML = '';
+
+    let query = city || 'auto:ip';
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${query}&days=7&hourly=1`)
+    .then(res => res.json())
+    .then(data => {
+        if (data.error) {
+            getWeatherData(); // If invalid city, fetch current location weather
+        } else {
+            showWeatherData(data);
+        }
+    })
+    .catch(err => {
+        console.error(err);
+    });
+}
+
 
 function showWeatherData(data) {
     const location = data.location.name;

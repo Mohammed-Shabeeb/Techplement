@@ -36,8 +36,48 @@ body {
     margin: 20px 0;
 }
 
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.loction-buttons {
+    
+}
+
+#city-input {
+    display: none; /* Hidden by default */
+    position: absolute;
+    
+    height: 25px;
+    width: 150px;
+
+    background: rgba(24, 24, 27, 0.8);
+    border-radius: 10px;
+
+    margin: 10px 0;
+}
+
+#current-location-btn {
+    color: white;
+    border: none;
+    background: none;
+    top: 0;
+    bottom: 5px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+
+
+#search-icon {
+    cursor: pointer;
+}
+
 .current-forecast {
-    height: 65%;
+    height: 55%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -159,6 +199,8 @@ body {
         padding: 0 20px;
         font-size: 18px;
     }
+
+    
 
     .current-forecast {
         border: none;
