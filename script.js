@@ -64,6 +64,9 @@ document.getElementById('search-icon').addEventListener('click', function() {
         input.focus();
 
         locationEL.innerHTML = '';
+
+        document.getElementById('search-icon').style.display = 'none';
+        document.getElementById('current-location-btn').style.display = 'none';
     } else {
         input.style.display = 'none';
     }
@@ -80,6 +83,9 @@ document.getElementById('city-input').addEventListener('keypress', function(e) {
 
         // Hide the input field after fetching weather data
         this.style.display = 'none';
+
+        document.getElementById('search-icon').style.display = 'inline-block';
+        document.getElementById('current-location-btn').style.display = 'inline-block';
 
         
     }
