@@ -41,21 +41,9 @@ setInterval(() => {
     dateEl.innerHTML = days[day] + ' ' + date + ', ' + months[month];
 }, 1000);
 
-//getWeatherData();
-
 document.addEventListener('DOMContentLoaded', function() {
     getWeatherData();
 });
-
-/*document.getElementById('current-location-btn').addEventListener('click', function() {
-    getWeatherData(); // This will call your existing function to fetch weather data using geolocation
-});
-
-document.getElementById('city-input').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        getWeatherCityData(this.value); // Fetch weather data for the entered city name
-    }
-});*/
 
 document.getElementById('location-display').addEventListener('click', function() {
     var input = document.getElementById('city-input');
@@ -87,7 +75,7 @@ document.getElementById('city-input').addEventListener('keypress', function(e) {
         // Hide the input field after fetching weather data
         this.style.display = 'none';
 
-        //document.getElementById('search-icon').style.display = 'inline-block';
+        
         document.getElementById('current-location-btn').style.display = 'none';
 
         
@@ -111,22 +99,6 @@ function getWeatherData() {
         
     })
 }
-
-/*function getWeatherCityData(city) {
-
-    dayEl.innerHTML = '';
-    weakEl.innerHTML = '';
-
-    let query = city || 'auto:ip'; // If city is not provided, use 'auto:ip' to fetch weather for current location
-    fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${query}&days=7&hourly=1`).then(res => res.json()).then(data => {
-        console.log(data);
-        showWeatherData(data);
-    })
-    .catch(err => {
-        // Handle any errors
-        console.error(err);
-    });
-}*/
 
 function getWeatherData(city) {
 
@@ -175,7 +147,7 @@ function showWeatherData(data) {
 
     locationEL.innerHTML = location;
     currentTempEl.innerHTML = currentTemp + '°C';
-    windSpeedEl.innerHTML = windSpeed/10;
+    windSpeedEl.innerHTML = windSpeed;
     windDirectionEl.innerHTML = windDirection;
     currentConditionEl.innerHTML = condition;
 
