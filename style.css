@@ -208,3 +208,78 @@ body {
         padding: 0 10px;
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .main-forecast {
+        width: 100%;
+        padding: 0 0;
+    }
+
+    .location-date-time {
+        padding: 0 20px;
+        font-size: 18px;
+    }
+
+    .current-forecast {
+        border: none;
+        height: 65%;
+        margin-bottom: 10px;
+    }
+
+    .current-forecast .temp {
+        font-size: 75px;
+    }
+
+    .current-forecast .condition{
+        font-size: 50px;
+        bottom: 10px;
+    }
+
+    .day-forecast {
+        justify-content: space-evenly;
+        margin-bottom: 3px;
+    }
+
+    .day-forecast-item {
+        width: 100px;
+    }
+
+    .day-forecast-item-time{
+        height: 15px;
+        width: 75px;
+    }
+
+   
+
+    .weak-forecast {
+        width: 100%;
+        height: 25%;
+        border-left: none;
+        flex-direction: row;
+        overflow-x: scroll;
+        background: none;
+        justify-content: space-around;
+    }
+
+    .weak-forecast-head {
+        display: none;
+    }
+
+    .weak-forecast-item {
+        width: 280px;
+        margin: 0 5px;
+        justify-content: space-between;
+        background: rgba(127, 127, 127, 0.4);
+        border-radius: 10px;
+        padding: 5px;
+    }
+
+    .weak-forecast-day {
+        width: 160px;
+        padding: 0 10px;
+    }
+}
