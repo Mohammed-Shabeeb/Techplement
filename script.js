@@ -57,7 +57,7 @@ document.getElementById('city-input').addEventListener('keypress', function(e) {
     }
 });*/
 
-document.getElementById('search-icon').addEventListener('click', function() {
+document.getElementById('location-display').addEventListener('click', function() {
     var input = document.getElementById('city-input');
     if (input.style.display === 'none') {
         input.style.display = 'block';
@@ -66,7 +66,7 @@ document.getElementById('search-icon').addEventListener('click', function() {
         locationEL.innerHTML = '';
 
         document.getElementById('search-icon').style.display = 'none';
-        document.getElementById('current-location-btn').style.display = 'none';
+        document.getElementById('current-location-btn').style.display = 'inline-block';
     } else {
         input.style.display = 'none';
     }
@@ -74,6 +74,9 @@ document.getElementById('search-icon').addEventListener('click', function() {
 
 document.getElementById('current-location-btn').addEventListener('click', function() {
     getWeatherData(); // Fetch current location weather
+
+    document.getElementById('current-location-btn').style.display = 'none';
+    document.getElementById('city-input').style.display = 'none';
 });
 
 document.getElementById('city-input').addEventListener('keypress', function(e) {
@@ -84,8 +87,8 @@ document.getElementById('city-input').addEventListener('keypress', function(e) {
         // Hide the input field after fetching weather data
         this.style.display = 'none';
 
-        document.getElementById('search-icon').style.display = 'inline-block';
-        document.getElementById('current-location-btn').style.display = 'inline-block';
+        //document.getElementById('search-icon').style.display = 'inline-block';
+        document.getElementById('current-location-btn').style.display = 'none';
 
         
     }
